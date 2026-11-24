@@ -1,144 +1,51 @@
+# Healthcare Data Bakehouse
 
+A healthcare data engineering project built with Python, Apache Airflow, PostgreSQL, and Docker. This project demonstrates the design and implementation of an integrated hospital clinical data lakehouse that ingests, processes, standardises, and integrates healthcare data from multiple sources to support analytics, reporting, and evidence-based decision-making.
 
-\# FHIR-Enabled Healthcare Data Engineering
+## Overview
 
-\# and Interoperability Platform
+This project focuses on building an end-to-end healthcare data pipeline that brings together clinical and administrative data from different hospital information sources.
 
+The project adopts a Medallion Architecture (Bronze, Silver, and Gold) to organise data processing and transformation into distinct layers:
 
+**Bronze Layer:** Ingests and stores raw healthcare data from different sources while preserving the original structure and values.
 
-\## Project Overview
+**Silver Layer:** Applies data cleaning, standardisation, deduplication, validation, and quality checks to produce consistent and reliable healthcare datasets.
 
+**Gold Layer:** Integrates processed datasets into analytics-ready tables and models to support hospital reporting, operational analytics, and clinical data analysis.
 
+The initial implementation focuses on three major healthcare data domains:
 
-This project develops an end-to-end healthcare data
+- **Patient Registration Data:** Patient demographic and registration information.
+- **Encounter Data:** Outpatient and inpatient visits and associated clinical encounters.
+- **Laboratory Data:** Laboratory requests, investigations, and test results.
 
-engineering platform for ingesting, preserving,
+The architecture is designed to accommodate additional healthcare domains, including radiology, diagnoses, procedures, pharmacy, and billing data as the project evolves.
 
-transforming, standardising and analysing synthetic
+Both synthetic and publicly available datasets are considered to demonstrate healthcare data integration while maintaining a practical and reproducible development environment.
 
-clinical data and public healthcare reference data.
+Data ingestion and transformation workflows are orchestrated using Apache Airflow, while Docker and Docker Compose provide a containerised environment for running the project services.
 
+## Tech Stack
 
+- Python
+- Apache Airflow
+- PostgreSQL
+- Docker & Docker Compose
+- Pandas
+- SQL
+- Git & GitHub
+- FHIR (Healthcare Data Interoperability)
+- SNOMED CT (Clinical Terminology Standardisation)
 
-The platform integrates Docker, Apache Airflow,
+## Architecture
 
-Python and PostgreSQL within a Medallion architecture.
+The project follows a Medallion Lakehouse Architecture:
 
+**Data Sources → Bronze → Silver → Gold → Analytics & Reporting**
 
+Each layer serves a specific purpose in transforming raw healthcare data into integrated, standardised, and analytics-ready information.
 
-HL7 FHIR R4 provides the interoperability framework,
+## Objective
 
-while LOINC and SNOMED CT support clinical terminology
-
-standardisation.
-
-
-
-The Nigeria Health Facility Registry (NHFR) provides
-
-Nigerian healthcare facility reference information.
-
-
-
-\## Objectives
-
-
-
-1\. Develop repeatable healthcare data ingestion pipelines.
-
-2\. Preserve source data and ingestion metadata.
-
-3\. Transform FHIR resources into relational datasets.
-
-4\. Integrate relevant clinical terminology.
-
-5\. Implement automated data-quality validation.
-
-6\. Develop Bronze, Silver and Gold data layers.
-
-7\. Produce FHIR-compatible output resources.
-
-8\. Create analytics-ready healthcare datasets.
-
-
-
-\## Technology Stack
-
-
-
-\- Docker
-
-\- Docker Compose
-
-\- Apache Airflow
-
-\- Python
-
-\- PostgreSQL
-
-\- Pandas
-
-\- SQLAlchemy
-
-\- Psycopg
-
-\- HL7 FHIR R4
-
-\- LOINC
-
-\- SNOMED CT
-
-\- Power BI
-
-\- Git
-
-
-
-\## Data Sources
-
-
-
-\- Synthea: synthetic clinical data
-
-\- LOINC: laboratory and observation terminology
-
-\- SNOMED CT: clinical terminology
-
-\- NHFR: Nigerian healthcare facility reference data
-
-
-
-\## Architecture
-
-
-
-Bronze -> Silver -> Gold
-
-
-
-\## Data Integrity Statement
-
-
-
-Synthea records are synthetic and must not be
-
-interpreted as real Nigerian patient records.
-
-
-
-NHFR data is maintained as an independent facility
-
-reference domain. No real patient-to-facility
-
-relationship is assumed.
-
-
-
-\## Project Status
-
-
-
-Implementation in progress.
-
-
-
+Design and implement an end-to-end healthcare data lakehouse that integrates clinical and administrative hospital data from multiple sources, applies data quality controls and standardisation processes, and produces reliable, analytics-ready datasets using Python, SQL, PostgreSQL, and Apache Airflow.
