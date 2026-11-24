@@ -1,4 +1,4 @@
-# Healthcare Data Bakehouse
+# Healthcare Data Lakehouse
 
 A healthcare data engineering project built with Python, Apache Airflow, PostgreSQL, and Docker. This project demonstrates the design and implementation of an integrated hospital clinical data lakehouse that ingests, processes, standardises, and integrates healthcare data from multiple sources to support analytics, reporting, and evidence-based decision-making.
 
