@@ -28,7 +28,7 @@ def get_database_url():
     # From Windows: localhost:5433
     # From Airflow in Docker: set POSTGRES_HOST=warehouse-db and POSTGRES_PORT=5432
     return URL.create(
-        drivername="postgresql+psycopg",
+        drivername=os.getenv("POSTGRES_DRIVER", "postgresql+psycopg"),
         username=os.getenv("POSTGRES_USER"),
         password=os.getenv("POSTGRES_PASSWORD"),
         host=os.getenv("POSTGRES_HOST", "localhost"),

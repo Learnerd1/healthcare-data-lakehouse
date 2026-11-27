@@ -9,10 +9,20 @@ x-airflow-common: &airflow-common
     AIRFLOW__CORE__FERNET_KEY: "ZmDfcTF7_60GrrY167zsiPd67pEvs0aGOv2oasOM1Pg="
     AIRFLOW__WEBSERVER__SECRET_KEY: "lakehouse-local-secret"
     _PIP_ADDITIONAL_REQUIREMENTS: "pandas requests pyyaml"
+    PYTHONPATH: /opt/project/src
+    POSTGRES_HOST: warehouse-db
+    POSTGRES_PORT: "5432"
+    POSTGRES_DRIVER: postgresql+psycopg2
+    POSTGRES_DB: healthcare_lakehouse
+    POSTGRES_USER: ${WAREHOUSE_USER}
+    POSTGRES_PASSWORD: ${WAREHOUSE_PASSWORD}
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
+    - ../src:/opt/project/src
+    - ../sql:/opt/project/sql
+    - ../data:/opt/project/data
   networks:
     - default
     - lakehouse_net
