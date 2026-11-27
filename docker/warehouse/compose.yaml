@@ -1,0 +1,34 @@
+services:
+  warehouse-db:
+    image: postgres:16
+    container_name: healthcare-warehouse-db
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - healthcare_warehouse_data:/var/lib/postgresql/data
+
+    networks:
+      default:
+      airflow_network:
+        aliases:
+          - warehouse-db
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  airflow_network:
+    external: true
+    name: lakehouse_net
+
+volumes:
+  healthcare_warehouse_data:

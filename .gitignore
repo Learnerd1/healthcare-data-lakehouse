@@ -38,3 +38,7 @@ Thumbs.db
 
 # Operating system
 desktop.ini
+docker/warehouse/.env
+.venv/
+airflow/logs/
+data/raw/
